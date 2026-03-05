@@ -483,6 +483,47 @@
         }
         .ig-embed-card a:hover { opacity: 0.9; color: white; }
 
+        /* Gallery Category Sections */
+        .gallery-category {
+            margin-bottom: 48px;
+            text-align: left;
+        }
+        .gallery-category:last-child { margin-bottom: 0; }
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .category-header .cat-icon { font-size: 1.8rem; }
+        .category-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+        .category-desc {
+            color: var(--text-medium);
+            font-size: 0.88rem;
+            margin-bottom: 16px;
+            padding-left: 46px;
+        }
+        .embed-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .embed-row iframe {
+            width: 100%;
+            border: 1px solid rgba(212,197,226,0.2);
+            border-radius: 12px;
+            background: var(--white);
+        }
+        @media (max-width: 640px) {
+            .embed-row { grid-template-columns: 1fr; }
+            .category-desc { padding-left: 0; }
+        }
+
         /* ========== PRICING ========== */
         .pricing { background: linear-gradient(180deg, var(--lavender-light) 0%, var(--cream) 100%); }
         .pricing-grid {
@@ -928,44 +969,86 @@
             <h2 class="section-title fade-in">My Work</h2>
             <p class="section-subtitle fade-in">A Glimpse of Recent Celebrations</p>
             <hr class="divider">
-            <p class="fade-in" style="color: var(--text-medium); margin-bottom: 32px; font-size: 0.95rem;">Browse my latest balloon creations on Instagram — from birthday stacks and arches to themed backdrops and corporate installations.</p>
+            <p class="fade-in" style="color: var(--text-medium); margin-bottom: 40px; font-size: 0.95rem;">Browse my latest balloon creations — from birthday stacks and arches to themed backdrops and corporate installations.</p>
 
-            <div class="ig-gallery fade-in">
-                <div class="ig-embed-card">
-                    <p style="font-size: 2.5rem; margin-bottom: 8px;">🎂</p>
-                    <h4 style="font-family: var(--font-display); color: var(--charcoal); margin-bottom: 6px;">Birthday Celebrations</h4>
-                    <p style="color: var(--text-medium); font-size: 0.85rem; margin-bottom: 16px;">Custom number stacks, milestone birthdays &amp; themed party pieces for all ages</p>
-                    <a href="https://www.instagram.com/p/DVcX0XLjxwz/" target="_blank" rel="noopener">View on Instagram →</a>
+            <!-- Birthday Celebrations -->
+            <div class="gallery-category fade-in">
+                <div class="category-header">
+                    <span class="cat-icon">🎂</span>
+                    <h3>Birthday Celebrations</h3>
                 </div>
-                <div class="ig-embed-card">
-                    <p style="font-size: 2.5rem; margin-bottom: 8px;">❤️</p>
-                    <h4 style="font-family: var(--font-display); color: var(--charcoal); margin-bottom: 6px;">Valentine &amp; Love</h4>
-                    <p style="color: var(--text-medium); font-size: 0.85rem; margin-bottom: 16px;">Heart-shaped arches, romantic balloon setups &amp; Valentine's Day specials</p>
-                    <a href="https://www.instagram.com/p/DUyVRGlDynR/" target="_blank" rel="noopener">View on Instagram →</a>
+                <p class="category-desc">Custom number stacks, milestone birthdays &amp; themed party pieces for all ages</p>
+                <div class="embed-row">
+                    <iframe src="https://www.instagram.com/p/DVcX0XLjxwz/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    <iframe src="https://www.instagram.com/p/DVC5ISlkQBH/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    <iframe src="https://www.instagram.com/p/DT9OoE3ER6u/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
                 </div>
-                <div class="ig-embed-card">
-                    <p style="font-size: 2.5rem; margin-bottom: 8px;">🏢</p>
-                    <h4 style="font-family: var(--font-display); color: var(--charcoal); margin-bottom: 6px;">Corporate &amp; Workplace</h4>
-                    <p style="color: var(--text-medium); font-size: 0.85rem; margin-bottom: 16px;">Staff appreciation, farewells, workplace celebrations &amp; professional installations</p>
-                    <a href="https://www.instagram.com/p/DQVWZrqj_H4/" target="_blank" rel="noopener">View on Instagram →</a>
+            </div>
+
+            <!-- Valentine & Love -->
+            <div class="gallery-category fade-in">
+                <div class="category-header">
+                    <span class="cat-icon">❤️</span>
+                    <h3>Valentine &amp; Love</h3>
                 </div>
-                <div class="ig-embed-card">
-                    <p style="font-size: 2.5rem; margin-bottom: 8px;">🎃</p>
-                    <h4 style="font-family: var(--font-display); color: var(--charcoal); margin-bottom: 6px;">Holiday &amp; Seasonal</h4>
-                    <p style="color: var(--text-medium); font-size: 0.85rem; margin-bottom: 16px;">Halloween, fall vibes, Christmas &amp; seasonal celebrations for all ages</p>
-                    <a href="https://www.instagram.com/p/DQSfC_UElx4/" target="_blank" rel="noopener">View on Instagram →</a>
+                <p class="category-desc">Heart-shaped arches, romantic balloon setups &amp; Valentine's Day specials</p>
+                <div class="embed-row">
+                    <iframe src="https://www.instagram.com/p/DUyVRGlDynR/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    <iframe src="https://www.instagram.com/p/DQnf1ZqEVmg/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
                 </div>
-                <div class="ig-embed-card">
-                    <p style="font-size: 2.5rem; margin-bottom: 8px;">👶</p>
-                    <h4 style="font-family: var(--font-display); color: var(--charcoal); margin-bottom: 6px;">Baby Showers</h4>
-                    <p style="color: var(--text-medium); font-size: 0.85rem; margin-bottom: 16px;">Animal-themed setups, gender reveals, nursery palettes &amp; sweet celebrations</p>
-                    <a href="https://www.instagram.com/p/DQTMACxEdVf/" target="_blank" rel="noopener">View on Instagram →</a>
+            </div>
+
+            <!-- Corporate & Workplace (includes Community Celebrations) -->
+            <div class="gallery-category fade-in">
+                <div class="category-header">
+                    <span class="cat-icon">🏢</span>
+                    <h3>Corporate &amp; Community</h3>
                 </div>
-                <div class="ig-embed-card">
-                    <p style="font-size: 2.5rem; margin-bottom: 8px;">🦸</p>
-                    <h4 style="font-family: var(--font-display); color: var(--charcoal); margin-bottom: 6px;">Themed Parties</h4>
-                    <p style="color: var(--text-medium); font-size: 0.85rem; margin-bottom: 16px;">Spider-Man, Peppa Pig, K-Pop, sports themes &amp; character-inspired creations</p>
-                    <a href="https://www.instagram.com/p/DQSHBwLEvui/" target="_blank" rel="noopener">View on Instagram →</a>
+                <p class="category-desc">Staff appreciation, farewells, community events &amp; professional installations</p>
+                <div class="embed-row">
+                    <iframe src="https://www.instagram.com/p/DQVWZrqj_H4/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    <iframe src="https://www.instagram.com/p/DQVPnPRgcGg/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    <iframe src="https://www.instagram.com/p/DQTLP7-EWSz/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Holiday & Seasonal -->
+            <div class="gallery-category fade-in">
+                <div class="category-header">
+                    <span class="cat-icon">🎃</span>
+                    <h3>Holiday &amp; Seasonal</h3>
+                </div>
+                <p class="category-desc">Halloween, fall vibes, Christmas &amp; seasonal celebrations</p>
+                <div class="embed-row">
+                    <iframe src="https://www.instagram.com/p/DQSfC_UElx4/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    <iframe src="https://www.instagram.com/p/DQSEMT5ksEg/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Baby Showers -->
+            <div class="gallery-category fade-in">
+                <div class="category-header">
+                    <span class="cat-icon">👶</span>
+                    <h3>Baby Showers</h3>
+                </div>
+                <p class="category-desc">Animal-themed setups, gender reveals, nursery palettes &amp; sweet celebrations</p>
+                <div class="embed-row">
+                    <iframe src="https://www.instagram.com/p/DQTMACxEdVf/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    <iframe src="https://www.instagram.com/p/DQSN6hjElqk/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Themed Parties -->
+            <div class="gallery-category fade-in">
+                <div class="category-header">
+                    <span class="cat-icon">🦸</span>
+                    <h3>Themed Parties</h3>
+                </div>
+                <p class="category-desc">Spider-Man, gaming, K-Pop, sports themes &amp; character-inspired creations</p>
+                <div class="embed-row">
+                    <iframe src="https://www.instagram.com/p/DQSHBwLEvui/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    <iframe src="https://www.instagram.com/p/DTfvcNDihn1/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+                    <iframe src="https://www.instagram.com/p/DQal1thEXc4/embed/" height="480" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
                 </div>
             </div>
 
@@ -982,11 +1065,11 @@
     <section class="special-events section-padding" id="special-events" style="background: linear-gradient(135deg, #fff5f5 0%, #fef3e2 50%, #f0f7ff 100%);">
         <div class="container text-center">
             <h2 class="section-title fade-in">Special Events &amp; Contests</h2>
-            <p class="section-subtitle fade-in">Giveaways, Community Love &amp; Featured Celebrations</p>
+            <p class="section-subtitle fade-in">Giveaways &amp; Featured Celebrations</p>
             <hr class="divider">
-            <p class="fade-in" style="color: var(--text-medium); margin-bottom: 32px; font-size: 0.95rem;">Follow me on Instagram to stay in the loop on upcoming giveaways, special community events, and exclusive contests. Here are some recent highlights!</p>
+            <p class="fade-in" style="color: var(--text-medium); margin-bottom: 32px; font-size: 0.95rem;">Follow me on Instagram to stay in the loop on upcoming giveaways and exclusive contests. Here are some recent highlights!</p>
 
-            <div class="ig-gallery fade-in" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+            <div class="ig-gallery fade-in" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 640px; margin: 0 auto;">
                 <div class="ig-embed-card" style="border-left: 4px solid #e8758f;">
                     <p style="font-size: 2.5rem; margin-bottom: 8px;">💝</p>
                     <h4 style="font-family: var(--font-display); color: var(--charcoal); margin-bottom: 6px;">Valentine's Day Giveaway</h4>
@@ -998,12 +1081,6 @@
                     <h4 style="font-family: var(--font-display); color: var(--charcoal); margin-bottom: 6px;">Teacher Appreciation Giveaway</h4>
                     <p style="color: var(--text-medium); font-size: 0.85rem; margin-bottom: 16px;">Nominate a deserving teacher to win a custom balloon gift — celebrating our educators!</p>
                     <a href="https://www.instagram.com/p/DQZQrsjEdLa/" target="_blank" rel="noopener">View on Instagram →</a>
-                </div>
-                <div class="ig-embed-card" style="border-left: 4px solid #e8758f;">
-                    <p style="font-size: 2.5rem; margin-bottom: 8px;">🎉</p>
-                    <h4 style="font-family: var(--font-display); color: var(--charcoal); margin-bottom: 6px;">Community Celebrations</h4>
-                    <p style="color: var(--text-medium); font-size: 0.85rem; margin-bottom: 16px;">Fun and cheerful setups for nursing homes, community groups &amp; special community events</p>
-                    <a href="https://www.instagram.com/p/DQTLP7-EWSz/" target="_blank" rel="noopener">View on Instagram →</a>
                 </div>
             </div>
 
