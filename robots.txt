@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lefebvre2158-ctrl.github.io/EVENTSBYMJ/sitemap.xml
