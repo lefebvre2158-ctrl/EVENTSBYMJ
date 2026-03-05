@@ -838,47 +838,47 @@ footer .copyright { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 
 <script>
 /* Gallery toggle */
-function toggleGallery(header) {{
+function toggleGallery(header) {
     const cat = header.parentElement;
     cat.classList.toggle('open');
-}}
+}
 
 /* Lightbox */
-function openLightbox(img) {{
+function openLightbox(img) {
     const lb = document.getElementById('lightbox');
     document.getElementById('lightbox-img').src = img.src;
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
-}}
-function closeLightbox() {{
+}
+function closeLightbox() {
     document.getElementById('lightbox').classList.remove('active');
     document.body.style.overflow = '';
-}}
-document.addEventListener('keydown', e => {{ if (e.key === 'Escape') closeLightbox(); }});
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
 /* Scroll animations */
-const observer = new IntersectionObserver(entries => {{
-    entries.forEach(e => {{ if (e.isIntersecting) e.target.classList.add('visible'); }});
-}}, {{ threshold: 0.1 }});
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
 
 /* Navbar scroll */
-window.addEventListener('scroll', () => {{
-    const nav = document.getElementById('navbar');
+window.addEventListener('scroll', function() {
+    var nav = document.getElementById('navbar');
     nav.style.boxShadow = window.scrollY > 50 ? '0 2px 30px rgba(107,58,107,0.12)' : '0 2px 20px rgba(107,58,107,0.08)';
-}});
+});
 
 /* Smooth scroll for nav links */
-document.querySelectorAll('a[href^="#"]').forEach(a => {{
-    a.addEventListener('click', e => {{
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {{
-            target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+        var target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             document.getElementById('navLinks').classList.remove('active');
-        }}
-    }});
-}});
+        }
+    });
+});
 </script>
 </body>
 </html>
