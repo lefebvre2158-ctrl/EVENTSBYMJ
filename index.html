@@ -348,88 +348,141 @@ a { color: var(--purple-deep); text-decoration: none; }
 }
 
 /* ===== PRICING ===== */
-.pricing { background: var(--cream); }
+.pricing { background: linear-gradient(180deg, #faf5f0 0%, #f5ede6 100%); }
 .pricing-grid {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 2.5rem;
 }
-.pricing-card {
-    background: var(--white); border-radius: 20px; padding: 2.5rem 2rem;
-    box-shadow: 0 8px 30px rgba(107,58,107,0.06);
-    border: 1px solid var(--cream-dark); transition: transform 0.3s;
-    position: relative; overflow: hidden; display: flex; flex-direction: column;
+@media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr; max-width: 450px; }
 }
-.pricing-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, var(--purple-deep), var(--gold), var(--rose));
+.pkg-card {
+    background: linear-gradient(160deg, #fdf9f5 0%, #f7f0ea 40%, #f2e8e0 100%);
+    border-radius: 16px; padding: 2.5rem 2rem 2rem;
+    box-shadow: 0 6px 30px rgba(107,58,107,0.08);
+    border: 1px solid #e8d5c8;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-.pricing-card.featured {
-    border: 2px solid var(--gold);
-    box-shadow: 0 12px 40px rgba(201,168,76,0.15);
+.pkg-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(107,58,107,0.12);
 }
-.pricing-card.featured::before { height: 5px; }
-.pricing-badge {
-    position: absolute; top: 1rem; right: -2rem;
-    background: linear-gradient(135deg, var(--gold), var(--gold-shimmer));
-    color: white; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-    padding: 0.3rem 2.5rem; transform: rotate(35deg); letter-spacing: 0.05em;
+/* Ornate floral corner accents */
+.pkg-card::before, .pkg-card::after {
+    content: '';
+    position: absolute;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle at center, rgba(180,130,170,0.15) 0%, rgba(200,160,180,0.08) 40%, transparent 70%);
+    pointer-events: none;
 }
-.pricing-card:hover { transform: translateY(-5px); }
-.pricing-card-header { text-align: center; margin-bottom: 1.5rem; }
-.pricing-card h3 {
-    font-family: var(--font-display); font-size: 1.5rem; color: var(--purple-deep); margin-bottom: 0.3rem;
+.pkg-card::before { top: -20px; right: -20px; }
+.pkg-card::after { top: -20px; left: -20px; }
+.pkg-corner-bl, .pkg-corner-br {
+    position: absolute; bottom: -20px;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle at center, rgba(200,160,120,0.12) 0%, rgba(200,170,140,0.06) 40%, transparent 70%);
+    pointer-events: none;
 }
-.pricing-card .price {
-    font-family: var(--font-display); font-size: 2.4rem; color: var(--gold);
-    font-weight: 700; margin: 0.5rem 0;
+.pkg-corner-bl { left: -20px; }
+.pkg-corner-br { right: -20px; }
+/* Decorative top border */
+.pkg-card-inner::before {
+    content: '';
+    display: block;
+    width: 60px; height: 2px; margin: 0 auto 1.2rem;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
-.pricing-card .price span { font-size: 1rem; font-weight: 300; color: var(--text-medium); }
-.pricing-tagline {
-    font-family: var(--font-script); font-size: 1.1rem; color: var(--rose);
-    margin-bottom: 0.5rem;
+.pkg-card-inner { position: relative; z-index: 1; }
+
+/* Package title */
+.pkg-title {
+    text-align: center; font-family: var(--font-display);
+    font-size: 1.6rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--charcoal);
+    margin-bottom: 0.2rem;
 }
-.pricing-subtitle {
-    font-size: 0.9rem; color: var(--text-medium); line-height: 1.5;
-    margin-bottom: 1rem; text-align: center;
+.pkg-price {
+    text-align: center; font-family: var(--font-display);
+    font-size: 2rem; font-weight: 700; color: var(--charcoal);
+    margin-bottom: 0.6rem; letter-spacing: 0.02em;
 }
-.pricing-section-label {
-    font-family: var(--font-display); font-size: 0.85rem; font-weight: 600;
-    color: var(--purple-deep); text-transform: uppercase; letter-spacing: 0.08em;
-    margin: 1.2rem 0 0.5rem; padding-bottom: 0.3rem;
-    border-bottom: 1px solid var(--gold-light);
+.pkg-price span {
+    font-size: 1rem; font-weight: 400; color: var(--text-medium);
 }
-.pricing-card ul {
-    list-style: none; text-align: left; margin: 0 0 0.5rem;
+/* Italic tagline under price */
+.pkg-tagline {
+    text-align: center; font-family: var(--font-body);
+    font-style: italic; font-size: 0.95rem; color: var(--text-medium);
+    line-height: 1.6; margin-bottom: 1.2rem; padding: 0 0.5rem;
 }
-.pricing-card ul li {
-    padding: 0.4rem 0; color: var(--text-medium); font-size: 0.9rem;
-    padding-left: 1.5rem; position: relative;
+/* Section headings (What's Included, Best Suited For, etc.) */
+.pkg-heading {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 1.05rem; font-weight: 600; color: var(--charcoal);
+    margin: 1.3rem 0 0.5rem; position: relative; padding-left: 0;
 }
-.pricing-card ul li::before {
-    content: '\2726'; position: absolute; left: 0; color: var(--gold);
+.pkg-heading::after {
+    content: '';
+    display: block; width: 40px; height: 1px;
+    background: var(--gold); margin-top: 0.25rem;
 }
-.pricing-card ul li.sub-item {
-    padding-left: 2.5rem; font-size: 0.85rem; color: var(--text-light);
+/* Bullet lists */
+.pkg-card ul {
+    list-style: none; margin: 0 0 0.3rem; padding: 0;
 }
-.pricing-card ul li.sub-item::before {
-    content: '\2013'; left: 1.5rem; color: var(--rose);
+.pkg-card ul li {
+    padding: 0.3rem 0 0.3rem 1.4rem; position: relative;
+    font-size: 0.9rem; color: var(--text-dark); line-height: 1.5;
 }
-.pricing-suited { margin-top: auto; }
-.pricing-booking {
-    margin-top: 1rem; padding-top: 1rem;
-    border-top: 1px solid var(--cream-dark);
+.pkg-card ul li::before {
+    content: '\2022'; position: absolute; left: 0.3rem;
+    color: var(--charcoal); font-size: 1rem;
 }
-.pricing-booking ul li { font-size: 0.85rem; color: var(--text-light); }
-.pricing-booking ul li::before { content: '\2714'; color: var(--purple-light); }
-.pricing-note {
-    max-width: 800px; margin: 2rem auto 0; text-align: center;
-    color: var(--text-medium); font-size: 0.95rem;
-    background: var(--white); padding: 1.5rem; border-radius: 12px;
-    border: 1px solid var(--cream-dark);
+.pkg-card ul li.pkg-sub {
+    padding-left: 2.4rem; font-size: 0.85rem; color: var(--text-medium);
 }
-.pricing-note-small {
-    font-size: 0.85rem; color: var(--text-light); font-style: italic;
-    text-align: center; margin-top: 0.8rem;
+.pkg-card ul li.pkg-sub::before {
+    content: '\2013'; left: 1.3rem; color: var(--text-light);
+}
+.pkg-card ul li.pkg-emoji::before { content: none; }
+.pkg-card ul li.pkg-emoji { padding-left: 0.3rem; }
+/* Small note text */
+.pkg-note {
+    font-size: 0.8rem; color: var(--text-light); font-style: italic;
+    margin-top: 0.3rem;
+}
+/* "Events by MJ Touch" script branding */
+.pkg-brand {
+    text-align: center; margin: 1.5rem 0 0.3rem;
+    font-family: var(--font-script); font-size: 1.4rem;
+    color: var(--charcoal);
+}
+.pkg-brand-sub {
+    text-align: center; font-size: 0.85rem;
+    font-style: italic; color: var(--text-medium);
+    margin-bottom: 0.5rem; line-height: 1.4;
+}
+/* Booking details section */
+.pkg-booking {
+    margin-top: auto; padding-top: 1rem;
+    border-top: 1px solid rgba(200,170,140,0.3);
+}
+.pkg-booking ul li::before {
+    content: '\25C8'; color: var(--gold); font-size: 0.8rem;
+}
+/* Bottom delivery note */
+.pkg-delivery {
+    font-size: 0.78rem; color: var(--text-light); font-style: italic;
+    margin-top: 0.6rem; line-height: 1.4;
+}
+/* Description paragraph in Signature/Luxe */
+.pkg-description {
+    font-size: 0.88rem; color: var(--text-medium); font-style: italic;
+    line-height: 1.6; margin: 0.5rem 0 0.5rem; padding: 0.8rem;
+    background: rgba(255,255,255,0.5); border-radius: 8px;
+    border-left: 3px solid var(--gold-light);
 }
 
 /* ===== BALLOON CARE ===== */
@@ -777,126 +830,135 @@ footer .copyright { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
     </div>
     <div class="pricing-grid">
 
-        <!-- PETITE PACKAGE -->
-        <div class="pricing-card fade-in">
-            <div class="pricing-card-header">
-                <h3>Petite Package</h3>
-                <div class="price">$250</div>
-                <div class="pricing-tagline">Intimate Celebrations</div>
-                <p class="pricing-subtitle">A simple, elegant statement piece designed for intimate celebrations.</p>
-            </div>
-            <div class="pricing-section-label">What's Included</div>
-            <ul>
-                <li>Single Chiara Backdrop</li>
-                <li>Balloon Garland to One Side</li>
-                <li>2&ndash;3 Colour Palette</li>
-                <li>Standard Balloon Styling (Non-Organic)</li>
-                <li>Birthday / Party Neon Sign</li>
-                <li>Pickup or Simple Install</li>
-            </ul>
-            <div class="pricing-section-label">Best Suited For</div>
-            <ul>
-                <li>Small Celebrations</li>
-                <li>Home Setups</li>
-                <li>Add-Ons to Existing D&eacute;cor</li>
-            </ul>
-            <div class="pricing-section-label">Customization Options</div>
-            <ul>
-                <li>Custom Vinyl Wording</li>
-                <li>Additional Balloons</li>
-                <li>Floral or Specialty Accents</li>
-                <li>Upgraded Backdrop Options</li>
-            </ul>
-            <p class="pricing-note-small">*Additional charges apply for customizations</p>
-            <div class="pricing-booking">
-                <div class="pricing-section-label">Booking Details</div>
+        <!-- ========== PETITE PACKAGE ========== -->
+        <div class="pkg-card fade-in">
+            <div class="pkg-corner-bl"></div>
+            <div class="pkg-corner-br"></div>
+            <div class="pkg-card-inner">
+                <div class="pkg-title">Petite Package: $250</div>
+                <p class="pkg-tagline">A simple, elegant statement piece designed for intimate celebrations.</p>
+
+                <div class="pkg-heading">What&rsquo;s Included:</div>
                 <ul>
-                    <li>50% Non-Refundable Deposit Required</li>
-                    <li>Balance Due on Event Day</li>
-                    <li>Damage Deposit for Rentals</li>
+                    <li>Single Chiara Backdrop</li>
+                    <li>Balloon Garland to One Side</li>
+                    <li>2&ndash;3 Colour Palette</li>
+                    <li>Standard Balloon Styling (Non-Organic)</li>
+                    <li>Birthday / Party Neon Sign</li>
+                    <li>Pickup or Simple Install</li>
                 </ul>
+
+                <div class="pkg-heading">Best Suited For:</div>
+                <ul>
+                    <li>Small Celebrations</li>
+                    <li>Home Setups</li>
+                    <li>Add-Ons to Existing D&eacute;cor</li>
+                </ul>
+
+                <div class="pkg-heading">Customization Options:</div>
+                <ul>
+                    <li>Custom Vinyl Wording</li>
+                    <li>Additional Balloons</li>
+                    <li>Floral or Specialty Accents</li>
+                    <li>Upgraded Backdrop Options</li>
+                </ul>
+                <p class="pkg-note">*Additional charges apply</p>
+
+                <div class="pkg-brand">Events by MJ Touch</div>
+                <p class="pkg-brand-sub">Stylish &amp; Affordable<br>Perfect for Any Occasion</p>
+
+                <div class="pkg-booking">
+                    <div class="pkg-heading">Booking Details:</div>
+                    <ul>
+                        <li>50% Non-Refundable Deposit Required</li>
+                        <li>Balance Due on Event Day</li>
+                        <li>Damage Deposit for Rentals</li>
+                    </ul>
+                    <p class="pkg-delivery">*Delivery &amp; setup fees are not included and will be quoted based on location.</p>
+                </div>
             </div>
         </div>
 
-        <!-- SIGNATURE PACKAGE -->
-        <div class="pricing-card featured fade-in">
-            <span class="pricing-badge">Popular</span>
-            <div class="pricing-card-header">
-                <h3>Signature Package</h3>
-                <div class="price">$350+ </div>
-                <div class="pricing-tagline">Elevated &amp; Refined</div>
-                <p class="pricing-subtitle">An elevated, custom-designed setup creating a refined and memorable focal point for your celebration.</p>
-            </div>
-            <div class="pricing-section-label">What's Included</div>
-            <ul>
-                <li>1&ndash;2 Chiara Backdrops</li>
-                <li class="sub-item">Layered for depth and dimension</li>
-                <li>Organic Balloon Styling</li>
-                <li class="sub-item">One side: full, lush installation</li>
-                <li class="sub-item">Second backdrop: partial accent styling</li>
-                <li>Up to 4 Colour Palette</li>
-                <li>Light Florals / Greenery Accents</li>
-                <li class="sub-item">Signature MJ touch</li>
-                <li>1 Custom Element Included</li>
-                <li>Vinyl Wording OR Cutout Sign</li>
-                <li>Professional Installation &amp; Styling</li>
-            </ul>
-            <div class="pricing-section-label">The Vision</div>
-            <ul>
-                <li>A balanced, luxurious look combining organic balloon artistry with soft floral details for a timeless and cohesive design</li>
-            </ul>
-            <div class="pricing-booking">
-                <div class="pricing-section-label">Booking Details</div>
+        <!-- ========== SIGNATURE PACKAGE ========== -->
+        <div class="pkg-card fade-in">
+            <div class="pkg-corner-bl"></div>
+            <div class="pkg-corner-br"></div>
+            <div class="pkg-card-inner">
+                <div class="pkg-title">Signature Package:</div>
+                <div class="pkg-price">Starting at $350</div>
+                <p class="pkg-tagline">An elevated, custom-designed setup creating a refined and memorable focal point for your celebration.</p>
+
+                <div class="pkg-heading">What&rsquo;s Included:</div>
                 <ul>
-                    <li>50% Non-Refundable Deposit Required</li>
-                    <li>Balance Due on Event Day</li>
-                    <li>Damage Deposit Required for Rental Items</li>
+                    <li>1&ndash;2 Chiara Backdrops</li>
+                    <li class="pkg-sub">(layered for depth and dimension)</li>
+                    <li>Organic Balloon Styling</li>
+                    <li class="pkg-sub">One side: full, lush installation</li>
+                    <li class="pkg-sub">Second backdrop: partial accent styling</li>
+                    <li>Up to 4 Colour Palette</li>
+                    <li>Light Florals / Greenery Accents</li>
+                    <li class="pkg-sub">(signature MJ touch &#127807;)</li>
+                    <li>1 Custom Element Included</li>
+                    <li>Vinyl Wording OR Cutout Sign</li>
+                    <li>Professional Installation &amp; Styling</li>
                 </ul>
+
+                <div class="pkg-brand">Events by MJ Touch</div>
+                <p class="pkg-description">This package is designed to create a balanced, luxurious look &mdash; combining organic balloon artistry with soft floral details for a timeless and cohesive design.</p>
+
+                <div class="pkg-booking">
+                    <div class="pkg-heading">Booking Details:</div>
+                    <ul>
+                        <li>50% Non-Refundable Deposit Required</li>
+                        <li>Balance Due on Event Day</li>
+                        <li>Damage Deposit Required for Rental Items</li>
+                    </ul>
+                    <p class="pkg-delivery">*Delivery &amp; setup fees are not included and will be quoted based on location.</p>
+                </div>
             </div>
         </div>
 
-        <!-- LUXE PACKAGE -->
-        <div class="pricing-card fade-in">
-            <div class="pricing-card-header">
-                <h3>Luxe Package</h3>
-                <div class="price">$500+ </div>
-                <div class="pricing-tagline">Your Unique Vision</div>
-                <p class="pricing-subtitle">Fully customized &amp; designed for your unique vision. A curated, high-end experience where every detail is intentionally styled to create a breathtaking statement.</p>
-            </div>
-            <div class="pricing-section-label">What's Included</div>
-            <ul>
-                <li>Multiple Chiara Backdrops or Single 7.2' Round Arch</li>
-                <li>Full Organic Balloon Installation</li>
-                <li>Up to 6-Colour Palette</li>
-                <li>Florals &amp; Greenery Styling</li>
-                <li>Backdrop Sign of Choice</li>
-                <li>1 Custom Feature</li>
-                <li class="sub-item">Cutout, box, or number stack</li>
-                <li>Floor Styling (mat or base)</li>
-                <li>Full Installation &amp; On-Site Styling</li>
-            </ul>
-            <div class="pricing-section-label pricing-suited">Best Suited For</div>
-            <ul>
-                <li>Weddings &amp; Bridal Showers</li>
-                <li>Milestone Celebrations</li>
-                <li>Clients wanting a fully styled, luxury experience</li>
-            </ul>
-            <div class="pricing-booking">
-                <div class="pricing-section-label">Booking Details</div>
+        <!-- ========== LUXE PACKAGE ========== -->
+        <div class="pkg-card fade-in">
+            <div class="pkg-corner-bl"></div>
+            <div class="pkg-corner-br"></div>
+            <div class="pkg-card-inner">
+                <div class="pkg-title">Luxe Package:</div>
+                <div class="pkg-price">Starting at $500+</div>
+                <p class="pkg-tagline">Fully customized &amp; designed for your unique vision</p>
+                <p class="pkg-description">A curated, high-end experience where every detail is intentionally styled to create a breathtaking statement.</p>
+
+                <div class="pkg-heading">What&rsquo;s Included:</div>
                 <ul>
-                    <li>50% Non-Refundable Deposit Required</li>
-                    <li>Balance Due on Event Day</li>
-                    <li>Damage Deposit Required</li>
+                    <li>Multiple Chiara backdrops or single 7.2&rsquo; round arch</li>
+                    <li>Full organic balloon installation</li>
+                    <li>Up to 6-colour palette</li>
+                    <li>Florals &amp; greenery styling</li>
+                    <li>Backdrop sign of choice</li>
+                    <li>1 custom feature <span style="font-size:0.85rem;color:var(--text-light);">(cutout, box, or number stack)</span></li>
+                    <li>Floor styling (mat or base)</li>
+                    <li>Full installation &amp; on-site styling</li>
                 </ul>
+
+                <div class="pkg-heading">Best Suited For:</div>
+                <ul>
+                    <li class="pkg-emoji">&#128146; Weddings &amp; Bridal Showers</li>
+                    <li class="pkg-emoji">&#127881; Milestone celebrations</li>
+                    <li class="pkg-emoji">&#128157; Clients wanting a fully styled, luxury experience</li>
+                </ul>
+
+                <div class="pkg-booking">
+                    <div class="pkg-heading">Booking Details:</div>
+                    <ul>
+                        <li>50% Non-Refundable Deposit Required</li>
+                        <li>Balance Due on Event Day</li>
+                        <li>Damage Deposit Required</li>
+                    </ul>
+                    <p class="pkg-delivery">*Delivery &amp; setup fees are quoted based on location.</p>
+                </div>
             </div>
         </div>
 
-    </div>
-    <div class="pricing-note">
-        <strong>&#128666; Delivery &amp; Setup</strong><br>
-        Delivery &amp; setup fees are not included and will be quoted based on location.<br><br>
-        <strong>&#128197; Limited Availability</strong><br>
-        Book early to secure your date. Contact us to discuss your vision and receive a custom quote.
     </div>
 </section>
 
