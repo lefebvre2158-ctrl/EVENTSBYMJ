@@ -577,6 +577,103 @@ a { color: var(--purple-deep); text-decoration: none; }
     .contact-grid { grid-template-columns: 1fr; }
 }
 
+/* ===== DESIGN YOUR VISION (AI PREVIEW) ===== */
+.designer { background: linear-gradient(180deg, var(--white) 0%, var(--rose-pale) 100%); }
+.designer-grid {
+    max-width: 1150px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+}
+@media (max-width: 900px) { .designer-grid { grid-template-columns: 1fr; } }
+.designer-form {
+    background: var(--white); border-radius: 20px; padding: 2rem;
+    box-shadow: 0 8px 30px rgba(107,58,107,0.08); border: 1px solid var(--cream-dark);
+}
+.designer-form h3 {
+    font-family: var(--font-display); font-size: 1.4rem; color: var(--purple-deep); margin-bottom: 0.4rem;
+}
+.designer-form .designer-intro { font-size: 0.92rem; color: var(--text-medium); margin-bottom: 1.4rem; line-height: 1.6; }
+.designer-form label {
+    display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--purple-deep); margin: 1rem 0 0.4rem;
+}
+.designer-form input, .designer-form select, .designer-form textarea {
+    width: 100%; padding: 0.85rem 1.1rem; border: 1px solid var(--cream-dark); border-radius: 12px;
+    font-family: var(--font-body); font-size: 0.95rem; background: var(--cream); color: var(--text-dark);
+    transition: border-color 0.3s;
+}
+.designer-form input:focus, .designer-form select:focus, .designer-form textarea:focus {
+    outline: none; border-color: var(--purple-light); background: var(--white);
+}
+.designer-form textarea { resize: vertical; min-height: 90px; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+    padding: 0.45rem 1rem; border-radius: 50px; border: 1px solid var(--cream-dark);
+    background: var(--cream); font-size: 0.85rem; color: var(--text-dark); cursor: pointer;
+    transition: all 0.25s; user-select: none;
+}
+.chip:hover { border-color: var(--purple-light); }
+.chip.selected {
+    background: linear-gradient(135deg, var(--purple-deep), var(--purple-mid));
+    color: white; border-color: var(--purple-deep);
+}
+.swatch-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.swatch {
+    width: 34px; height: 34px; border-radius: 50%; cursor: pointer;
+    border: 3px solid transparent; box-shadow: 0 2px 6px rgba(0,0,0,0.12); transition: transform 0.2s;
+    position: relative;
+}
+.swatch:hover { transform: scale(1.1); }
+.swatch.selected { border-color: var(--gold); transform: scale(1.12); }
+.swatch.selected::after {
+    content: '\2713'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 0.9rem; text-shadow: 0 0 3px rgba(0,0,0,0.6);
+}
+.designer-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+.designer-actions .btn { flex: 1; text-align: center; min-width: 180px; }
+.btn-secondary {
+    background: var(--white); color: var(--purple-deep); border: 2px solid var(--purple-deep);
+}
+.btn-secondary:hover { background: var(--purple-pale); transform: translateY(-2px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+.designer-preview {
+    background: var(--white); border-radius: 20px; padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(107,58,107,0.08); border: 1px solid var(--cream-dark);
+    position: sticky; top: 100px;
+}
+.preview-frame {
+    aspect-ratio: 1 / 1; width: 100%; border-radius: 14px; overflow: hidden;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--purple-pale) 50%, var(--rose-light) 100%);
+    display: flex; align-items: center; justify-content: center; position: relative;
+    border: 1px dashed var(--purple-light);
+}
+.preview-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.preview-placeholder { text-align: center; padding: 2rem; color: var(--text-medium); }
+.preview-placeholder .big { font-size: 3rem; margin-bottom: 0.6rem; }
+.preview-placeholder p { font-size: 0.92rem; line-height: 1.6; }
+.preview-loading { text-align: center; color: var(--purple-deep); }
+.preview-loading .spinner {
+    width: 48px; height: 48px; margin: 0 auto 1rem; border-radius: 50%;
+    border: 4px solid var(--purple-pale); border-top-color: var(--purple-deep);
+    animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.preview-loading p { font-size: 0.9rem; }
+.preview-error {
+    text-align: center; padding: 1.5rem; color: #8a3a3a; font-size: 0.9rem; line-height: 1.6;
+}
+.preview-caption {
+    margin-top: 1rem; font-size: 0.85rem; color: var(--text-medium); line-height: 1.6;
+    background: var(--cream); padding: 0.9rem 1rem; border-radius: 10px;
+    border-left: 3px solid var(--gold);
+}
+.preview-caption strong { color: var(--purple-deep); }
+.preview-disclaimer { margin-top: 0.8rem; font-size: 0.75rem; color: var(--text-light); font-style: italic; text-align: center; }
+.designer-status {
+    margin-top: 1rem; padding: 0.9rem 1.1rem; border-radius: 10px; font-size: 0.9rem; display: none;
+}
+.designer-status.ok { display: block; background: #eef7ee; color: #2f6b3a; border: 1px solid #cfe7d2; }
+.designer-status.err { display: block; background: #fbeeee; color: #8a3a3a; border: 1px solid #f0cfcf; }
+
 /* ===== FOOTER ===== */
 footer {
     background: linear-gradient(135deg, var(--charcoal) 0%, #4a3050 100%);
@@ -621,6 +718,7 @@ footer .copyright { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
             <li><a href="#services">Services</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#designer">Design Tool</a></li>
             <li><a href="#balloon-care">Balloon Care</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -962,6 +1060,138 @@ footer .copyright { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
     </div>
 </section>
 
+<!-- DESIGN YOUR VISION (AI PREVIEW + QUOTE) -->
+<section class="section designer" id="designer">
+    <div class="section-header">
+        <span class="accent">Try It Yourself</span>
+        <h2>Design Your Vision</h2>
+        <div class="divider"></div>
+        <p>Describe your dream setup, see an AI-generated preview in seconds, then send it to Maja for a quote</p>
+    </div>
+    <div class="designer-grid">
+
+        <div class="designer-form fade-in">
+            <h3>Build Your Setup</h3>
+            <p class="designer-intro">Pick a few options and add any details. We&rsquo;ll create a preview image to help visualize your event.</p>
+
+            <label>Event Type</label>
+            <select id="dEvent">
+                <option>Birthday Party</option>
+                <option>Baby Shower</option>
+                <option>Wedding / Bridal Shower</option>
+                <option>Engagement</option>
+                <option>Corporate Event</option>
+                <option>Holiday Celebration</option>
+                <option>Graduation</option>
+                <option>Themed Party</option>
+                <option>Other Celebration</option>
+            </select>
+
+            <label>Package</label>
+            <select id="dPackage">
+                <option value="Petite Package ($250)">Petite &mdash; single backdrop, garland to one side ($250)</option>
+                <option value="Signature Package (from $350)" selected>Signature &mdash; 1&ndash;2 backdrops, organic styling, florals (from $350)</option>
+                <option value="Luxe Package (from $500+)">Luxe &mdash; multiple backdrops or round arch, full install (from $500+)</option>
+                <option value="Not sure yet">Not sure yet &mdash; help me choose</option>
+            </select>
+
+            <label>Colour Palette <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-light);">(pick up to 4)</span></label>
+            <div class="swatch-row" id="dColours">
+                <div class="swatch" data-colour="blush pink" style="background:#f4c2cf" title="Blush Pink"></div>
+                <div class="swatch" data-colour="dusty rose" style="background:#d4859a" title="Dusty Rose"></div>
+                <div class="swatch" data-colour="mauve" style="background:#b088a8" title="Mauve"></div>
+                <div class="swatch" data-colour="lavender" style="background:#c9b3e0" title="Lavender"></div>
+                <div class="swatch" data-colour="deep purple" style="background:#6b3a6b" title="Deep Purple"></div>
+                <div class="swatch" data-colour="ivory" style="background:#f7f1e6;border:1px solid #ddd" title="Ivory"></div>
+                <div class="swatch" data-colour="white" style="background:#ffffff;border:1px solid #ddd" title="White"></div>
+                <div class="swatch" data-colour="champagne" style="background:#e9d8b4" title="Champagne"></div>
+                <div class="swatch" data-colour="gold" style="background:#c9a84c" title="Gold"></div>
+                <div class="swatch" data-colour="sage green" style="background:#a8bfa0" title="Sage Green"></div>
+                <div class="swatch" data-colour="baby blue" style="background:#b7d3ec" title="Baby Blue"></div>
+                <div class="swatch" data-colour="navy" style="background:#26344f" title="Navy"></div>
+                <div class="swatch" data-colour="red" style="background:#b23a3a" title="Red"></div>
+                <div class="swatch" data-colour="black" style="background:#222222" title="Black"></div>
+                <div class="swatch" data-colour="silver" style="background:#c8c8cf" title="Silver"></div>
+            </div>
+
+            <label>Backdrop Style</label>
+            <div class="chip-row" id="dBackdrop">
+                <div class="chip selected" data-val="single chiara arch backdrop">Single Chiara Arch</div>
+                <div class="chip" data-val="two layered chiara arch backdrops">Two Layered Arches</div>
+                <div class="chip" data-val="large 7-foot round arch">Round Arch</div>
+                <div class="chip" data-val="no backdrop, balloons only">Balloons Only</div>
+            </div>
+
+            <label>Balloon Style</label>
+            <div class="chip-row" id="dStyle">
+                <div class="chip selected" data-val="organic balloon garland with mixed sizes">Organic Garland</div>
+                <div class="chip" data-val="classic uniform balloon garland">Classic Garland</div>
+                <div class="chip" data-val="balloon columns and stacks">Columns / Stacks</div>
+                <div class="chip" data-val="full balloon arch">Full Arch</div>
+            </div>
+
+            <label>Add-Ons <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-light);">(select any)</span></label>
+            <div class="chip-row" id="dAddons">
+                <div class="chip" data-val="soft florals and greenery accents">Florals &amp; Greenery</div>
+                <div class="chip" data-val="neon sign">Neon Sign</div>
+                <div class="chip" data-val="custom vinyl wording on backdrop">Vinyl Wording</div>
+                <div class="chip" data-val="cutout name sign">Cutout Sign</div>
+                <div class="chip" data-val="large number balloons">Number Balloons</div>
+                <div class="chip" data-val="pedestals and floor mat styling">Pedestals / Floor Mat</div>
+                <div class="chip" data-val="pearl and chrome accent balloons">Pearl &amp; Chrome Balloons</div>
+                <div class="chip" data-val="bows and ribbons">Bows &amp; Ribbons</div>
+            </div>
+
+            <label>Theme or Extra Details <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-light);">(optional)</span></label>
+            <textarea id="dDetails" placeholder="e.g. Butterfly garden theme, 'Happy 1st Birthday Mia', indoor living room setup, boho vibe..."></textarea>
+
+            <div class="designer-actions">
+                <button type="button" class="btn btn-primary" id="dGenerate" onclick="generatePreview()">&#10024; Generate Preview</button>
+                <button type="button" class="btn btn-secondary" id="dRegenerate" onclick="generatePreview()" style="display:none;">&#8635; Try Another</button>
+            </div>
+        </div>
+
+        <div class="designer-preview fade-in">
+            <div class="preview-frame" id="previewFrame">
+                <div class="preview-placeholder">
+                    <div class="big">&#127880;</div>
+                    <p>Your AI preview will appear here.<br>Choose your options and click <strong>Generate Preview</strong>.</p>
+                </div>
+            </div>
+            <div class="preview-caption" id="previewCaption" style="display:none;"></div>
+            <p class="preview-disclaimer">AI previews are for inspiration only. Your final design is hand-crafted by Maja and may vary.</p>
+
+            <form id="quoteForm" action="https://formspree.io/f/xdkodndl" method="POST" style="display:none; margin-top:1.2rem;">
+                <input type="hidden" name="_subject" value="New Design Quote Request - Events by MJ">
+                <input type="hidden" name="form_type" value="Design Your Vision quote request">
+                <input type="hidden" name="design_summary" id="qSummary">
+                <input type="hidden" name="ai_prompt" id="qPrompt">
+                <input type="hidden" name="preview_image_link" id="qImageLink">
+                <h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--purple-deep);margin-bottom:0.3rem;">Love it? Request a Quote</h3>
+                <p style="font-size:0.85rem;color:var(--text-medium);margin-bottom:0.8rem;">Your design choices and preview will be sent to Maja with your message.</p>
+                <div class="designer-form" style="padding:0;box-shadow:none;border:none;">
+                    <label style="margin-top:0.4rem;">Your Name</label>
+                    <input type="text" name="name" required>
+                    <label>Email</label>
+                    <input type="email" name="_replyto" required>
+                    <label>Phone</label>
+                    <input type="tel" name="phone">
+                    <label>Event Date</label>
+                    <input type="date" name="event_date">
+                    <label>Anything else?</label>
+                    <textarea name="message" placeholder="Venue, guest count, questions..."></textarea>
+                </div>
+                <div class="designer-actions" style="margin-top:1rem;">
+                    <button type="submit" class="btn btn-primary" id="qSubmit">Send Design for Quote</button>
+                    <a class="btn btn-secondary" id="qDownload" href="#" download="events-by-mj-preview.png">Download Preview</a>
+                </div>
+                <div class="designer-status" id="qStatus"></div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
 <!-- BALLOON CARE -->
 <section class="section balloon-care" id="balloon-care">
     <div class="section-header">
@@ -1101,7 +1331,7 @@ footer .copyright { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 
 <!-- FOOTER -->
 <footer>
-    <img src="{footer_logo}" alt="Events by MJ">
+    <img src="data:image/png;base64,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" alt="Events by MJ">
     <p class="footer-tagline">Every Detail Made Beautiful</p>
     <div class="footer-links">
         <a href="#home">Home</a>
@@ -1148,13 +1378,165 @@ window.addEventListener('scroll', function() {
 
 /* Smooth scroll for nav links */
 document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    var href = a.getAttribute('href');
+    if (href === '#') return;
     a.addEventListener('click', function(e) {
         e.preventDefault();
-        var target = document.querySelector(a.getAttribute('href'));
+        var target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             document.getElementById('navLinks').classList.remove('active');
         }
+    });
+});
+
+/* =====================================================================
+   DESIGN YOUR VISION - AI preview + quote request
+   The website never holds the OpenAI key. It calls a small private relay
+   (Cloudflare Worker, see ai-relay/worker.js in the repo) which holds the key.
+   ===================================================================== */
+var AI_RELAY_URL = 'https://eventsbymj-ai.YOUR-SUBDOMAIN.workers.dev';  /* <-- paste your Worker URL here */
+
+var lastPreview = { dataUrl: '', prompt: '', summary: '' };
+
+/* Chip + swatch selection */
+document.querySelectorAll('#dBackdrop .chip, #dStyle .chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+        chip.parentElement.querySelectorAll('.chip').forEach(function(c) { c.classList.remove('selected'); });
+        chip.classList.add('selected');
+    });
+});
+document.querySelectorAll('#dAddons .chip').forEach(function(chip) {
+    chip.addEventListener('click', function() { chip.classList.toggle('selected'); });
+});
+document.querySelectorAll('#dColours .swatch').forEach(function(sw) {
+    sw.addEventListener('click', function() {
+        if (sw.classList.contains('selected')) { sw.classList.remove('selected'); return; }
+        var picked = document.querySelectorAll('#dColours .swatch.selected');
+        if (picked.length >= 4) { picked[0].classList.remove('selected'); }
+        sw.classList.add('selected');
+    });
+});
+
+function selectedVals(containerId, cls) {
+    return Array.prototype.map.call(
+        document.querySelectorAll('#' + containerId + ' .' + cls + '.selected'),
+        function(el) { return el.getAttribute(cls === 'swatch' ? 'data-colour' : 'data-val'); }
+    );
+}
+
+function buildDesign() {
+    var eventType = document.getElementById('dEvent').value;
+    var pkg = document.getElementById('dPackage').value;
+    var colours = selectedVals('dColours', 'swatch');
+    var backdrop = selectedVals('dBackdrop', 'chip')[0] || 'single chiara arch backdrop';
+    var style = selectedVals('dStyle', 'chip')[0] || 'organic balloon garland';
+    var addons = selectedVals('dAddons', 'chip');
+    var details = document.getElementById('dDetails').value.trim();
+    if (colours.length === 0) colours = ['blush pink', 'ivory', 'gold'];
+
+    var prompt = 'Professional event photography of an elegant ' + eventType.toLowerCase() +
+        ' balloon decor setup. ' + backdrop + ' with a ' + style + ' in ' + colours.join(', ') + ' colours. ' +
+        (addons.length ? 'Includes ' + addons.join(', ') + '. ' : '') +
+        (details ? 'Theme and details: ' + details + '. ' : '') +
+        'Luxurious, soft, romantic styling, clean indoor venue, natural light, high-end balloon artistry, photorealistic, no people, no text unless specified.';
+
+    var summary =
+        'Event: ' + eventType + '\n' +
+        'Package: ' + pkg + '\n' +
+        'Colours: ' + colours.join(', ') + '\n' +
+        'Backdrop: ' + backdrop + '\n' +
+        'Balloon style: ' + style + '\n' +
+        'Add-ons: ' + (addons.length ? addons.join(', ') : 'none') + '\n' +
+        'Details: ' + (details || 'none');
+
+    return { prompt: prompt, summary: summary, eventType: eventType, pkg: pkg, colours: colours };
+}
+
+function generatePreview() {
+    var design = buildDesign();
+    var frame = document.getElementById('previewFrame');
+    var genBtn = document.getElementById('dGenerate');
+    var regenBtn = document.getElementById('dRegenerate');
+    var caption = document.getElementById('previewCaption');
+
+    if (AI_RELAY_URL.indexOf('YOUR-SUBDOMAIN') !== -1) {
+        frame.innerHTML = '<div class="preview-error">The AI preview tool isn’t connected yet.<br>Please contact us directly and we’ll design it with you!</div>';
+        return;
+    }
+
+    genBtn.disabled = true; regenBtn.disabled = true;
+    frame.innerHTML = '<div class="preview-loading"><div class="spinner"></div><p>Designing your preview&hellip;<br><small>This takes about 15&ndash;30 seconds</small></p></div>';
+    caption.style.display = 'none';
+
+    fetch(AI_RELAY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: design.prompt })
+    })
+    .then(function(r) { return r.json().then(function(j) { return { ok: r.ok, body: j }; }); })
+    .then(function(res) {
+        if (!res.ok || !res.body.image) { throw new Error(res.body.error || 'Generation failed'); }
+        var dataUrl = 'data:image/png;base64,' + res.body.image;
+        lastPreview = { dataUrl: dataUrl, prompt: design.prompt, summary: design.summary };
+
+        frame.innerHTML = '<img src="' + dataUrl + '" alt="AI preview of your balloon decor design" onclick="openLightbox(this)" style="cursor:zoom-in;">';
+        caption.innerHTML = '<strong>' + design.eventType + '</strong> &middot; ' + design.pkg + '<br>' + design.colours.join(' &middot; ');
+        caption.style.display = 'block';
+
+        document.getElementById('qSummary').value = design.summary;
+        document.getElementById('qPrompt').value = design.prompt;
+        document.getElementById('qDownload').href = dataUrl;
+        var qf = document.getElementById('quoteForm');
+        qf.style.display = 'block';
+        regenBtn.style.display = 'inline-block';
+        genBtn.style.display = 'none';
+    })
+    .catch(function(err) {
+        frame.innerHTML = '<div class="preview-error">Sorry, we couldn’t create a preview right now.<br>' +
+            '<small>' + (err.message || 'Please try again in a moment.') + '</small><br><br>' +
+            'You can still send us your design choices for a quote using the contact form.</div>';
+    })
+    .finally(function() { genBtn.disabled = false; regenBtn.disabled = false; });
+}
+
+/* Quote submission (AJAX so the visitor stays on the page) */
+document.getElementById('quoteForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var status = document.getElementById('qStatus');
+    var btn = document.getElementById('qSubmit');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    status.className = 'designer-status';
+
+    /* Upload the preview to the relay so Maja gets a link in the email */
+    var uploadStep = lastPreview.dataUrl
+        ? fetch(AI_RELAY_URL + '/save', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ image: lastPreview.dataUrl.split(',')[1] })
+          }).then(function(r) { return r.ok ? r.json() : { url: '' }; }).catch(function() { return { url: '' }; })
+        : Promise.resolve({ url: '' });
+
+    uploadStep.then(function(saved) {
+        document.getElementById('qImageLink').value = saved.url || '(image could not be saved - regenerate from the AI prompt below)';
+        return fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+        });
+    })
+    .then(function(r) {
+        if (!r.ok) throw new Error('send failed');
+        status.className = 'designer-status ok';
+        status.innerHTML = '&#10004; Sent! Maja will review your design and get back to you with a quote.';
+        form.querySelectorAll('input:not([type=hidden]), textarea').forEach(function(i) { i.value = ''; });
+        btn.textContent = 'Sent';
+    })
+    .catch(function() {
+        status.className = 'designer-status err';
+        status.innerHTML = 'Something went wrong sending your request. Please email <a href="mailto:eventsbymj.edmonton@gmail.com">eventsbymj.edmonton@gmail.com</a> and attach your downloaded preview.';
+        btn.disabled = false; btn.textContent = 'Send Design for Quote';
     });
 });
 </script>
